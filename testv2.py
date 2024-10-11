@@ -3,8 +3,8 @@ import numpy as np
 import onnxruntime as ort
 
 # Загрузка модели ONNX
-session = ort.InferenceSession("D:\\LableImage\\runs\\detect\\train5\\weights\\best.onnx")  # Укажите путь к вашей модели
-
+# session = ort.InferenceSession("D:\\LableImage\\runs\\detect\\train5\\weights\\best.onnx")  # Укажите путь к вашей модели
+session = ort.InferenceSession("D:\\LableImage\\best.onnx")  # Укажите путь к вашей модели
 # Загрузка изображения
 image = cv2.imread('D:\\LableImage\\data\\images\\train\\id_170_value_72_507.jpg')  # Укажите путь к вашему изображению
 image_resized = cv2.resize(image, (640, 640))
