@@ -20,12 +20,10 @@ def draw_boxes(image, predictions, img_size=640, conf_threshold=0.5):
     draw = ImageDraw.Draw(image)
     
     for pred in predictions:
-        # Пропускаем предсказания, если confidence ниже порога
         confidence = pred[4]
         if confidence < conf_threshold:
             continue
 
-        # Преобразуем координаты из формата центра и размеров в углы рамки
         x_center, y_center, width, height = pred[:4]
         
         x1 = int((x_center - width / 2) / img_size * image.size[0])
@@ -36,7 +34,6 @@ def draw_boxes(image, predictions, img_size=640, conf_threshold=0.5):
         # Отрисовка рамки
         draw.rectangle([x1, y1, x2, y2], outline='red', width=2)
         
-        # Добавление текста с confidence
         draw.text((x1, y1), f"{confidence:.2f}", fill='red')
 
 # Путь к тестовому изображению
